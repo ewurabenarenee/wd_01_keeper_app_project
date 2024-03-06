@@ -8,9 +8,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faSquarePlus, faUser } from "@fortawesome/free-regular-svg-icons";
 import AddTask from "./AddTask";
-export default function SideBar() {
+export default function SideBar(props) {
   return (
-    <div className="bg-blue-200 items-center p-3 w-64 ">
+    <div
+      className={`bg-blue-200 items-center p-3 w-64 fixed bottom-0 top-[3rem] ${
+        props.isSideBarOpen && "-translate-x-full"
+      }`}
+    >
       <AddTask />
 
       <div className=" bg-blue-200 mt-10 p-3">

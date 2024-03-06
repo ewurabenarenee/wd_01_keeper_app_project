@@ -2,14 +2,14 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faSun } from "@fortawesome/free-solid-svg-icons";
 import { faSquarePlus, faUser } from "@fortawesome/free-regular-svg-icons";
-export default function NavBar() {
+export default function NavBar(props) {
   return (
     <div className="bg-violet-500 flex justify-between  items-center p-3 text-white ">
       <div className="flex">
-        <div className="justify-around mx-2">
+        <button onClick={props.toggleSideBar} className="justify-around mx-2">
           {" "}
           <FontAwesomeIcon icon={faBars} size="lg" />
-        </div>
+        </button>
         KEEPER
       </div>
       <div className="flex mx-2 justify-around">
