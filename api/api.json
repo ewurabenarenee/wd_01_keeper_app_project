@@ -1,0 +1,57 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Project X",
+      "slug": "project-x",
+      "trackedTime": 120
+    },
+    {
+      "id": 2,
+      "name": "Project Y",
+      "slug": "project-y",
+      "trackedTime": 45
+    },
+    {
+      "id": 3,
+      "name": "Project Z",
+      "slug": "project-z",
+      "trackedTime": 80
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Task 1",
+      "description": "This is the first task of Project X",
+      "time": 60,
+      "projectId": 1,
+      "isRunning": false,
+      "remainingTime": 2,
+      "remainingSeconds": 45,
+      "completed": false
+    },
+    {
+      "id": 2,
+      "name": "Task 2",
+      "description": "This is the first task of Project Y",
+      "time": 15,
+      "projectId": 2,
+      "isRunning": true,
+      "remainingTime": 10,
+      "remainingSeconds": 30,
+      "completed": false
+    },
+    {
+      "id": 3,
+      "name": "Task 3",
+      "description": "This is the second task of Project X",
+      "time": 45,
+      "projectId": 1,
+      "isRunning": false,
+      "remainingTime": 0,
+      "remainingSeconds": 0,
+      "completed": true
+    }
+  ]
+}

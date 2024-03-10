@@ -1,36 +1,56 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faCirclePlus,
-  faPlusCircle,
-  faSun,
-} from "@fortawesome/free-solid-svg-icons";
-import { faSquarePlus, faUser } from "@fortawesome/free-regular-svg-icons";
-import AddTask from "./AddTask";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useDarkMode } from "../contexts/DarkModeContext";
+import { fetchProjects, selectProject } from "../store/projectSlice";
+import AddItem from "./AddItem";
+
 export default function SideBar(props) {
+  const { isDarkMode } = useDarkMode();
+
+  const dispatch = useDispatch();
+  const projects = useSelector((state) => state.projects.items);
+  const selectedProjectId = useSelector(
+    (state) => state.projects.selectedProjectId
+  );
+
+  useEffect(() => {
+    dispatch(fetchProjects());
+  }, [dispatch]);
+
+  function handleProjectClick(id) {
+    props.onProjectSelect(id);
+    dispatch(selectProject(id));
+  }
+
   return (
     <div
-      className={`bg-blue-200 items-center p-3 w-64 fixed bottom-0 top-[3rem] ${
-        props.isSideBarOpen && "-translate-x-full"
-      }`}
+      className={`${
+        isDarkMode ? "bg-blue-500" : "bg-blue-200"
+      } w-64 fixed bottom-0 top-[3rem] ${
+        !props.isSideBarOpen && "-translate-x-full"
+      } z-10`}
     >
-      <AddTask />
-
-      <div className=" bg-blue-200 mt-10 p-3">
-        <div>STATS</div>
-      </div>
-
-      <div className="text-center">
-        <div>Projects</div>
-      </div>
-      <div className="mx-6 mb-2 p-2">
-        <div>Inbox</div>
-        <div>CLA</div>
-        <div>Project X</div>
-        <div>Project S</div>
-        <div>Exercise</div>
-        <div>Example</div>
+      <AddItem type="project" />
+      <div className="text-center p-3">Projects</div>
+      <div className="mt-2">
+        {projects.map((project) => (
+          <div
+            key={project.id}
+            onClick={() => handleProjectClick(project.id)}
+            className={`cursor-pointer ${
+              project.id === selectedProjectId
+                ? "bg-blue-800 text-white"
+                : "bg-blue-200 text-black"
+            }`}
+          >
+            <div
+              className={`p-2 w-full over:bg-blue-300
+              ${project.id === selectedProjectId ? "" : "hover:bg-blue-300"}`}
+            >
+              {project.name}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -1,8 +1,25 @@
-# React + Vite
+# Keeper App Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Keeper is a small React application designed to help users keep track of their tasks. This project was created as homework for a bootcamp at Code Labs Academy.
 
-Currently, two official plugins are available:
+## How to Run this Application
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Backend
+
+To run the backend server, use the following command:
+
+```bash
+npx json-server api/api.json
+```
+
+### Frontend
+
+To run the app in development mode, use:
+
+```bash
+npm run dev
+```
+
+## Current Status and Future Improvements
+
+As of now, the application allows users to manage their tasks. However, some features, such as persisting new tasks or projects to the backend, are not yet implemented and may be considered for future updates.
